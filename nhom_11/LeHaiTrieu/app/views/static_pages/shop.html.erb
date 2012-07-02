@@ -1,0 +1,13 @@
+<% provide(:title, 'Shop') %>
+<div class="row">
+      <ul class="nav nav-list">
+        <li class="nav-header">
+          CATEGORY
+        </li>
+        <% @categories.each do |category| %>
+        <li>
+          <%= render 'category_sidebar', category: category %>
+        </li>
+        <% end %>
+      </ul>
+</div>

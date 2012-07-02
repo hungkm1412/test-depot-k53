@@ -1,0 +1,21 @@
+    <div class="center hero-unit">
+    <h1>Welcome to Shopping Cart</h1>
+
+    <h2>
+    </h2>
+    <% if !signed_in? %>
+    <%= link_to "Sign In", signin_path , class: "btn btn-large btn-primary" %>
+    <br>
+    <br>
+    <br>
+    <p>
+    Not have an account ?<%= link_to "Sign up now!", signup_path %>
+    <p>
+    <% else %>
+    <%if current_user.admin? %>
+	    <%= link_to "User", users_path , class: "btn btn-large btn-primary" %>
+	    <%= link_to "Category   ", categories_path , class: "btn btn-large btn-primary" %>
+    <%end%>
+	<%end%>
+    </div>
+

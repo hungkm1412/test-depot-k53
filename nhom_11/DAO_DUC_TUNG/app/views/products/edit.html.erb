@@ -1,0 +1,9 @@
+<% provide(:title, 'Edit product') -%>
+<h1>Update your product</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@product) do |f| %>
+      <%= render 'fields', f:f %>
+    <% end -%>
+  </div>
+</div>

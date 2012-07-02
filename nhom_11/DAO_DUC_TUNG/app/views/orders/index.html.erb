@@ -1,0 +1,30 @@
+<% provide(:title, 'All orders') -%>
+<h1>Orders</h1>
+
+<div class="span12">
+  <table class="table table-bordered table-strip">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>User</td>
+        <td>Product</td>
+        <td>Total</td>
+        <!-- <td>Actions</td> -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| -%>
+        <tr>
+          <td><%= link_to "##{order.id}", order %></td>
+          <td><%= link_to order.user.name, order.user %></td>
+          <td><%= order.cart.items.count %></td>
+          <td><%= order.cart.total_price %></td>
+          <!-- <td>
+            <%= link_to "Delete", order, method: :delete, data: { confirm: "You sure?" } %>
+          </td> -->
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+  <div class="span10 offset2"><%= will_paginate %></div>
+</div>

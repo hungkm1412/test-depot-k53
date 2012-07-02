@@ -1,0 +1,13 @@
+<li>
+  <h3><%= link_to category.name, category %> </h3>
+   <%= link_to "Edit ", edit_category_path(category) %> 
+  | <%= link_to "delete", category, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  
+  <% @products = category.products.all %>
+
+  <ul class="products">
+    <%= render @products %>  
+  </ul>
+
+</li>

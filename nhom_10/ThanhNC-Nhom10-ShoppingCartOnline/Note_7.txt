@@ -1,0 +1,27 @@
+21/6/2012
+
+1. Debug and Rails environments
+  + application.html.erb
+    Code:
+      <body>
+        <%= render 'layouts/header' %>
+        <div class="container">
+          <%= yield %>
+          <%= render 'layouts/footer' %>
+(add)     <%= debug(params) if Rails.env.development? %>
+        </div>
+      </body>
+
+  + custom.css.scss
+    read 7.2
+
+  + Routing but no page
+    + route.rb
+      Code:
+        Add       resources :users
+        Delete    get "users/new" 
+
+  + Test user show page 
+    + Install gem: 'factory_girl_rails', '1.4.0'
+      - purpose: Create User model object automatically for test
+      -

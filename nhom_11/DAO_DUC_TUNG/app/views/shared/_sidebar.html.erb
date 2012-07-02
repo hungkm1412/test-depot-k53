@@ -1,0 +1,13 @@
+<h3>Categories</h3>
+<ul>
+  <% Category.all.each do |cat| %>
+    <li><%= link_to cat.name, category_path(cat) %>
+  <% end %>
+</ul>
+
+<h3>Cart (<%= current_cart.items.count %>)</h3>
+<ul>
+  <%= render current_cart.items.all %>
+</ul>
+<%= link_to "Check out", checkout_path %>
+<%# link_to "Clear", clear_cart_path %>

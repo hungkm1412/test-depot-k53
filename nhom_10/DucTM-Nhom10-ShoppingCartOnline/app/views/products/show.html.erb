@@ -1,0 +1,16 @@
+<% provide(:title, @product.name) %>
+<div class="row">
+  <aside class="span4">
+  <section>
+  <h1>
+    <%= @product.name %>
+  </h1>
+  <% if current_user.admin? %>
+    <%= link_to "delete", @product, method: :delete,
+      data: { confirm: "You sure?" } %>
+      <%= link_to "edit", edit_product_path(@product),
+        data: { confirm: "You sure?" } %>
+      <% end %>
+      </section>
+      </aside>
+    </div>

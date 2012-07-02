@@ -1,0 +1,14 @@
+
+<aside class="span2 alpha">
+  <%= render 'shared/sidebar' %>
+</aside>
+
+<div class="span6 offset1">
+  <% if !current_user.nil? and current_user.admin? %>
+    <%= form_for(@product) do |f| %>
+      <%= render 'fields', f:f %>
+    <% end -%>
+  <% else %>
+    <%= render @product %>
+  <% end -%>
+</div>

@@ -1,0 +1,15 @@
+<% provide(:title, 'Add to cart') %>
+<h1>Add to cart</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@cart) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :number %>
+      <%= f.number_field :number %>
+
+      <%= f.submit "Buy now", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

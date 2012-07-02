@@ -1,0 +1,4 @@
+<li>
+  <%= link_to product.name, product %>
+  Price: <%= product.price %>
+</li>

@@ -1,0 +1,43 @@
+<% provide(:title, @category.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @category.name %>
+      </h1>
+	<% if current_user.admin? %>
+      <p>
+    <%= link_to "Delete", @category, method: :delete,
+      data: { confirm: "You sure?" } %>
+    | <%= link_to "Edit", edit_category_path(@category) %>
+      <p>
+<%end%>
+    </section>
+      <section>
+	<h3> Create Product </h3>
+	<%= form_for(@product) do |f| %>
+  	<%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price %>
+     
+      <%= f.label :category_id %>
+      <%= f.select :category_id, Category.all.collect {|n| [n.name, n.id] } %>
+  <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+<% end %>
+      </section>
+  </aside>
+
+
+  <div class="span8">
+    <% if @category.products.any? %>
+      <h3>Products (<%= @category.products.count %>)</h3>
+      <ol class="products">
+        <%= render @products %>
+      </ol>
+      <%= will_paginate @products %>
+    <% end %>
+  </div>
+</div>

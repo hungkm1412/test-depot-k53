@@ -1,0 +1,9 @@
+<tr>
+  <th><%= link_to Product.find(cart.product_id).name, product_path(cart.product_id) %> </th>
+  <th><%= Product.find(cart.product_id).price %> VND</th>
+  <th><%= cart.number %></th>
+  <th><%= link_to "delete", cart, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  </th>
+
+</tr>

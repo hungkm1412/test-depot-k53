@@ -1,0 +1,8 @@
+class Product < ActiveRecord::Base
+  attr_accessible :name, :price
+  belongs_to :category
+  before_save { |product| product.name = name.downcase }
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :price, presence:true
+  validates :category_id, presence: true
+end

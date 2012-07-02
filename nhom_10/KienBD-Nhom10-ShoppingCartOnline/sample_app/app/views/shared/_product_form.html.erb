@@ -1,0 +1,12 @@
+<%= form_for(@product) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price %>
+     
+      <%= f.label :category_id %>
+      <%= f.select :category_id, Category.all.collect {|n| [n.name, n.id] } %>
+  <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+<% end %>

@@ -1,0 +1,11 @@
+<h2><%= link_to product.name, product %></h2>
+<div><span>Price: </span><%= product.price %></div>
+<p><%= product.description %></p>
+
+<%= form_for(CartItem.new) do %>
+  <%= hidden_field_tag :cart_id, current_cart.id %>
+  <%= hidden_field_tag :product_id, product.id %>
+  <%= number_field_tag :quantity, 1 %>
+  <%= submit_tag "Add to cart", class: "btn btn-primary btn-large" %>
+<% end -%>
+

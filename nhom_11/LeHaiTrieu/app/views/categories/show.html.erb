@@ -1,0 +1,15 @@
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @category.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="span8">
+    <% @products = @category.products.all %>
+    <ul class="products">
+      <%= render @products %>  
+    </ul>
+  </div>
+</div>

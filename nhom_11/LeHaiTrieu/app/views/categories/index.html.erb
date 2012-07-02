@@ -1,0 +1,15 @@
+<% provide(:title, 'Categories') %>
+<h1>All Categories 
+</h1>
+
+<h2>Number of Categories: <%= @allcategories.count %></h2>
+
+<%= link_to "Add Category", new_category_path , class: "btn btn-large btn-primary" %> 
+<hr>
+<%= will_paginate %>
+
+<ol class="categories">
+  <%= render @categories %>  
+</ol>
+
+<%= will_paginate %>

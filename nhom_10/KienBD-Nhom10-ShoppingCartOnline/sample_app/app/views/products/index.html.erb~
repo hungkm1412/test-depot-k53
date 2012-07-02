@@ -1,0 +1,13 @@
+<% provide(:title, 'All products') %>
+<h1>All Products</h1>
+<section>
+<% if current_user.admin? %>
+<%= link_to "Create " , new_product_path, class: "btn btn-large btn-primary"  %>
+<%end%>
+</section>
+
+<ul class="products">
+  <%= render @products %>
+</ul>
+
+<%= will_paginate %>

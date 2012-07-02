@@ -1,0 +1,70 @@
+20/06/2012
+
+1. Annotation for model file (Making comment: Detail of model)
+	+ add annotate gem to the Gemfile and separate the "group :test" block
+		Code:
+		group :development do
+			...
+  		gem 'annotate', '~> 2.4.1.beta'
+		end
+
+		group :test do
+
+		end
+
+	+ bundle install
+	+ bundle exec annotate --position before
+
+2. Creating user
+	+ User.create(name:"Foo",email:"foo@gmail.com")
+
+3. Finding User
+	+ User.find(id)
+	+ User.find_by_email(email)
+
+4. Updating User
+	+ user.email = "abc@abc.com"
+	+ user.update_attributes(name:"The Dude",email: "dude@dude.com")
+
+5. Validating
+	+ Presence: 
+		validates :name, presence: true
+	+ Length:   
+		validates :name, length: {maximum:LENGTH})
+	+ Format:    
+		VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+
+  	- Can use Rubular(www.rubular.com) for test expression
+  + Uniqueness: 
+  	  validates :name, uniqueness: true
+
+  	  - Ignoring case: { case_sensitive: false }
+  	 Note: 
+  	 	+ Problem: Can happen error when receive 2 submits at the same time
+  	 	+ Solution: Add index to user email
+  	 		Code:
+  	 			rails generate migration add_index_to_users_email
+
+  	 		File: db/migrate/[timestamp]_add_index_to_users_email.rb
+  	 			def change
+    				add_index :users, :email, unique: true
+  				end
+
+  		+ Down case before save (user.rb)
+  			before_save { |user| user.email = email.downcase }
+
+  + Encrypt password:
+  	+ Add Gem: 'bcrypt-ruby', '3.0.1'
+  	+ Add password_digest (read in book)
+
+  + Confirm password:
+  	+ Not present
+  	+ Mismatch
+  	+ Password confirmation is nil
+
+  + Authentication
+    + Valid or not
+    + Password too short
+
+

@@ -1,0 +1,14 @@
+<li>
+  <span class="content">Name : <%= product.name %> | Price: <%= product.price %> </span>
+  <span class="timestamp">
+    Added <%= time_ago_in_words(product.created_at) %> ago.
+  </span>
+<%if current_user.admin? %>    
+	<%= link_to "delete", product, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: product.name %>
+  | <%= link_to "edit", edit_product_path(product) %>
+<% end%>
+<br>
+<%= link_to "Add to Cart", root_path %>
+</li>

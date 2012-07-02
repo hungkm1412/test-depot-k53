@@ -1,0 +1,2 @@
+
+watch("\.rb") {|md| system('bundle exec rspec spec/requests/static_pages_spec.rb') }

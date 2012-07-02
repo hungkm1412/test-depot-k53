@@ -1,0 +1,13 @@
+<% provide(:title, 'Edit category') %>
+<h1>Edit category</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@category) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.submit "Update", class: "btn btn-primary btn-large" %>
+    <% end %>
+  </div>
+</div>

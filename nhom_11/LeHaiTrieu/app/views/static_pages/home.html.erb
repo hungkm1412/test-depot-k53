@@ -1,0 +1,7 @@
+<% if signed_in? %>
+
+  <%= render partial: 'static_pages/signed_in_home' %>  
+<% else %>
+
+  <%= render partial: 'static_pages/not_signed_in_home' %>  
+<% end %> 

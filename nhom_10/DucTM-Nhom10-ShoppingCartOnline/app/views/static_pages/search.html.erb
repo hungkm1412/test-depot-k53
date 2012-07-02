@@ -1,0 +1,12 @@
+<h1>Search user</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_tag(users_find_path) do %>
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+
+      <%= submit_tag "Search", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

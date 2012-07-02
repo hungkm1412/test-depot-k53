@@ -1,0 +1,29 @@
+<% provide(:title, 'Orders') -%>
+<h1>Order #<%= @order.id %></h1>
+
+<div class="span12">
+  <%= render 'users/show' %>
+  <table class="table table-bordered table-strip">
+    <thead>
+      <tr>
+        <td>Product</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Actions</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.items.each do |item| -%>
+        <tr>
+          <td><%= link_to item.product.name, item.product %></td>
+          <td><%= item.product.price %></td>
+          <td><%= item.quantity %></td>
+          <td>
+            <%= link_to "Delete", item, method: :delete, data: { confirm: "You sure?" } %>
+          </td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+  <p>Total: <%= @order.cart.total_price %></p>
+</div>

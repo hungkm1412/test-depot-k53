@@ -1,0 +1,10 @@
+<% provide(:title, 'Carts') %>
+<h1>All Carts: 
+  <%= @allcarts.count %>
+</h1>
+<%= will_paginate %>
+  <h3 align="right">Sum of Price: <%=@cart.sum() %> VND </h3>
+  <table class="table">
+    <%= render @carts %>  
+  </table>
+<%= will_paginate %>

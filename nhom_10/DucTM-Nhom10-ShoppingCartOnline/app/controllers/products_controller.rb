@@ -1,0 +1,61 @@
+class ProductsController < ApplicationController
+
+  before_filter :signed_in_user
+  before_filter :admin_user, only: [:destroy, :update, :edit]
+
+  def destroy
+    Product.find(params[:id]).destroy
+    flash[:success] = "Product destroyed."
+    redirect_to products_path
+  end
+
+  def index
+    @products = Product.paginate(page: params[:page])
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update_attributes(params[:product])
+      flash[:success]="Profile updated"
+      redirect_to @product
+    else
+      render 'edit'
+    end
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    @cart = Cart.new
+  end
+
+  def search
+    @product = Product.find_by_name(params[:name])
+    render 'show'
+  end
+
+  def new
+    @product = Product.new
+  end
+
+
+  def create
+    current_category = Category.find(params[:product][:category_id])
+    @product = current_category.products.create(name: params[:product][:name], price: params[:product][:price])
+    if @product.save
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @product
+    else
+      render 'new'
+    end
+  end
+
+  private
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
+  end
+
+end

@@ -1,0 +1,13 @@
+<% provide(:title, 'All products') %>
+<h1>All products</h1>
+
+<ul class="nav nav-list">
+  <li class="nav-header">
+    Categories List
+    </li>
+    <li class="active">
+    <%= will_paginate %>
+    <%= render @categories %>
+    <%= will_paginate %>
+    </li>
+  </ul>

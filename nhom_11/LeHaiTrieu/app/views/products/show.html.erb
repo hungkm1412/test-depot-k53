@@ -1,0 +1,25 @@
+<div class="row">
+  <aside class="span8">
+    <section>
+      <h1>
+        Product name : <%= @product.name %>
+      </h1>
+      <h1>
+        Category : <%= @category.name %>
+      </h1>
+      <h1>
+        Price : <%= @product.price %> VND
+      </h1>
+    </section>
+  </aside>
+  <% if signed_in? %>
+  <div class="span4">
+    <%= form_for(Cart.new) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div><%= hidden_field_tag :user_id, current_user.id %></div>
+    <div><%= hidden_field_tag :product_id, @product.id %></div>
+    <div><%= number_field_tag :number %> <%= f.submit "Add to cart", class: "btn btn-large btn-primary" %> </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<% provide(:title, 'All categories') -%>
+<h1>Categories</h1>
+
+<ul class="categories">
+  <% @categories.each do |cat| %>
+    <li><%= link_to cat.name, category_path(cat) %>
+    <% if !current_user.nil? && current_user.admin? %>
+  | <%= link_to "Edit", edit_category_path(cat) %>
+  | <%= link_to "Delete", cat, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

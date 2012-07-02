@@ -1,0 +1,48 @@
+<% provide(:title, 'All Products') -%>
+<h1>All Products</h1>
+
+<div class="row">
+  <% if !current_user.nil? && current_user.admin? %>
+    <div class="span12">
+      <table class="table table-bordered table-strip">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Category</td>
+            <td>Price</td>
+            <td>Description</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| -%>
+            <tr>
+              <td><%= link_to product.name, product %></td>
+              <td><%= product.category.name %></td>
+              <td><%= product.price %></td>
+              <td><%= product.description %></td>
+              <td>
+                <%= link_to "Edit", edit_product_path(product)  %>
+                <%= link_to "Delete", product, method: :delete, data: { confirm: "You sure?" } %>
+            </td>
+          </tr>
+        <% end -%>
+      </tbody>
+    </table>
+    <div class="span10 offset2"><%= will_paginate %></div>
+  </div>
+<% else %>
+  <aside class="span2 alpha">
+    <%= render 'shared/sidebar' %>
+  </aside>
+  <div class="span10" style="margin-left: 20px">
+    <% @products.each do |product| -%>
+      <div class="span3 well" style="max-width: 25%;">
+        <%= render product %>
+        <%= link_to "View", product %>
+      </div>
+    <% end -%>
+  </div>
+  <div class="span10 offset2"><%= will_paginate %></div>
+<% end -%>
+</div>

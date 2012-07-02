@@ -1,0 +1,20 @@
+<% provide(:title, 'All Categories') %>
+<h1>All Categories</h1>
+
+<% if current_user.admin? %>
+<%= link_to 'Add' ,  new_category_path %>
+<%end%>
+<%= will_paginate %>
+
+<ul class="nav nav-list">
+  <li class="nav-header">
+    List Categories
+  </li>
+    <li class="categories">
+       <%= render @categories %>
+    </li>
+</ul>
+
+<%= will_paginate %>
+
+

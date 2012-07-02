@@ -1,0 +1,30 @@
+<% provide(:title, @category.name) %>
+<div class="row">
+  <aside class="span4">
+  <section>
+  <h1>
+    <%= @category.name %>
+  </h1>
+  <% if current_user.admin? %>
+    <%= link_to "delete", @category, method: :delete,
+      data: { confirm: "You sure?" } %>
+      <%= link_to "edit", edit_category_path(@category),
+        data: { confirm: "You sure?" } %>
+
+      <% end %>
+      </section>
+      </aside>
+      <div class="span8">
+        <h3>
+          Products (<%= @category.products.count %>)
+          <% if current_user.admin? %>
+
+            <%= link_to "Add product", new_product_path %>
+          <% end %>
+        </h3>
+        <ol class="products">
+          <%= render @products %>
+        </ol>
+        <%= will_paginate @products %>
+      </div>
+    </div>
