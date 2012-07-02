@@ -1,0 +1,4 @@
+class AddIndexToCategoriesName < ActiveRecord::Migration
+  def change
+  end
+end

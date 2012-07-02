@@ -1,0 +1,4 @@
+Product: <%= product.name %> </br>
+Description: <%= product.description %> </br>
+Price: <%= product.price %> </br>
+</br>

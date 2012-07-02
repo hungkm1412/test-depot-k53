@@ -1,0 +1,35 @@
+<header>
+	<nav>
+		<ul>
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Product", products_path %></li>
+
+			<% @products.each do |product| %>
+  <tr>
+    <td><%= link_to product.name, product %></td>
+    <td><%= product.description %></td>
+    <td><%= product.price %></td>
+		<td><%= link_to 'Cart', new_cart_item_path(product: product) %></td>
+
+		<% if !current_user.nil? %>
+    	<% if current_user.admin? %>
+    		<td><%= link_to 'Show', product %></td>
+    		<td><%= link_to 'Edit', edit_product_path(product) %></td>
+    		<td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    	<% end %>
+    <% end %>
+  </tr>
+<% end %>
+
+
+			<li><%= link_to "Category", categories_path %></li>
+			<% if signed_in? %>
+				<li><%= link_to "Users", users_path %></li>
+				<li><%= link_to "Profile", user_path(current_user) %></li>
+				<li><%= link_to "Sign out", signout_path %></li>
+			<% else %>
+				<li><%= link_to "Sign in", signin_path %></li>
+			<% end %>
+		</ul>
+	</nav>
+</header>

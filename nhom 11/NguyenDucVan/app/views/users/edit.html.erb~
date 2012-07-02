@@ -1,0 +1,21 @@
+<% if current_user.admin? && !current_user?(user) %>
+	<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages' %>
+
+	  <%= f.label :name %>
+	  <%= f.text_field :name %>
+
+	  <%= f.label :email %>
+	  <%= f.text_field :email %>
+
+	  <%= f.label :password %>
+	  <%= f.password_field :password %>
+
+	  <%= f.label :password_confirmation, "Confirmation" %>
+	  <%= f.password_field :password_confirmation %>
+
+	  <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+	<% end %>
+<% else %>
+	<p>Sorry! Only administrator is accepted to edit user</p>
+<% end %>

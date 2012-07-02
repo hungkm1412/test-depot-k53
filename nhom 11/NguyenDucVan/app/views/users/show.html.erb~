@@ -1,0 +1,8 @@
+<% provide(:title, @user.name) %>
+<%= gravatar_for @user %>
+
+<%= @user.name %>
+<% if @user.email.length > 5 %>
+	<%= descript = @user.email.chars.to_a[0..5].insert('...').join %>
+<% end %>
+<!-- <%= @user.email %> -->
